@@ -1,5 +1,7 @@
 # DIY sonnette
 
+First, if you want to see the result, have a look at [this video](https://youtu.be/OrXuBeXwijw).
+
 ## Requirements
 
 - 2 x [Elegoo nano](https://www.elegoo.com/products/elegoo-nano-v3-0)
@@ -18,6 +20,10 @@ NB: Regarding local regulations, you perhaps need something different that 868mH
 - Processor: Atmega328P
 - Programmator: AVRISP mkll
 
+# Code
+
+Have a look inside the code folder, or access directly [sender code](code/sender.ino) or [receiver code](code/receiver.ino).
+
 # Schemas
 
 ## Sender
@@ -27,3 +33,7 @@ NB: Regarding local regulations, you perhaps need something different that 868mH
 ## Receiver
 
 ![Receiver](medias/receiver.jpg?raw=true "Receiver")
+
+# Thanks
+
+[Kris Kasprzak](https://github.com/KrisKasprzak/EBYTE) for the usefull Ebyte lib.
