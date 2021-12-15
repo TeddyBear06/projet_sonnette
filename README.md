@@ -34,7 +34,7 @@ When someone push the button, a message will be displayed on the OLED screen (fo
 
 ## Receiver
 
-When the receiver catch a message, it will look at its value and if it's the expected one (see this as a binding process) it will start ringing 4 times then stop and swith back to listingin mode again.
+When the receiver catch a message, it will look at its value and if it's the expected one (see this as a binding process) it will start ringing 4 times then stop and swith back to listening mode again.
 
 ![Receiver](medias/receiver.jpg?raw=true "Receiver")
 
