@@ -22,7 +22,7 @@ NB: Regarding local regulations, you perhaps need something different that 868mH
 
 # Code
 
-Have a look inside the repo's code folder, or access directly [sender code](code/sender.ino) or [receiver code](code/receiver.ino).
+Have a look inside the repo's code folder, or access directly [sender code](code/sender/sender.ino) or [receiver code](code/receiver.ino).
 
 # Schemas
 
