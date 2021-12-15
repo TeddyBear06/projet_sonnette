@@ -28,13 +28,18 @@ Have a look inside the repo's code folder, or access directly [sender code](code
 
 ## Sender
 
+When someone push the button, a message will be displayed on the OLED screen (for instance, "Appel en cours..." but you can modify it in the source code). Then the - builtin - LED will start blinking until the end of the pause time (only one message is sent to the receiver to save batteries). Once it's done, the screen is switched off and someone can push the button again.
+
 ![Sender](medias/sender.jpg?raw=true "Sender")
 
 ## Receiver
+
+When the receiver catch a message, it will look at its value and if it's the expected one (see this as a binding process) it will start ringing 4 times then stop and swith back to listingin mode again.
 
 ![Receiver](medias/receiver.jpg?raw=true "Receiver")
 
 # Thanks
 
-[Kris Kasprzak](https://github.com/KrisKasprzak/EBYTE) for the usefull Ebyte lib.
-[Fritzing](https://fritzing.org/) for making shemas production easier.
+- [Kris Kasprzak](https://github.com/KrisKasprzak/EBYTE) for the usefull Ebyte lib;
+- [Fritzing](https://fritzing.org/) for making shemas production easier;
+- Fritzing community for building custom modules that we can import and use in our schemas. 
