@@ -1,20 +1,14 @@
 #include <SoftwareSerial.h>
-#include <Adafruit_SSD1306.h>
 #include "EBYTE.h"
 
-#define PIN_AX 2
-#define PIN_TX 4
-#define PIN_RX 3
-#define PIN_M1 5
-#define PIN_M0 6
-#define BTN    7
-
-#define PIX_WIDTH             128
-#define PIX_HEIGHT            64
-#define RST                   -1
-#define ADDR_I2C              0x3C
-
-Adafruit_SSD1306 oled(PIX_WIDTH, PIX_HEIGHT, &Wire, RST);
+#define PIN_AX  2
+#define PIN_TX  4
+#define PIN_RX  3
+#define PIN_M1  5
+#define PIN_M0  6
+#define BTN     A5
+#define LED_BTN A4
+#define SPK     7
 
 struct DATA {
   int State;
@@ -29,38 +23,32 @@ void setup() {
   ESerial.begin(9600);
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(BTN, INPUT_PULLUP);
+  pinMode(LED_BTN, OUTPUT);
+  digitalWrite(LED_BTN, LOW);
+  pinMode(SPK, OUTPUT);
+  digitalWrite(SPK, LOW);
   Transceiver.init();
-  oled.begin(SSD1306_SWITCHCAPVCC, ADDR_I2C);
-  oled.clearDisplay();
-  oled.ssd1306_command(SSD1306_DISPLAYON);
-  oled.setTextSize(3);
-  oled.setTextColor(SSD1306_BLACK, SSD1306_WHITE);
-  oled.setCursor(0, 0);
-  oled.println("OK");
-  oled.display();
-  delay(1000);
-  oled.ssd1306_command(SSD1306_DISPLAYOFF);
 }
 
 void loop() {
   if (digitalRead(BTN) == HIGH){
     Message.State = 1;
     Transceiver.SendStruct(&Message, sizeof(Message));
-    oled.ssd1306_command(SSD1306_DISPLAYON);
-    oled.setTextSize(2);
-    oled.setTextColor(SSD1306_BLACK, SSD1306_WHITE);
-    oled.setCursor(0, 0);
-    oled.println("Appel en");
-    oled.println("cours...");
-    oled.display();
-    for (int i = 0; i <= 125; i++) {
-      digitalWrite(LED_BUILTIN, HIGH);
-      delay(50);
-      digitalWrite(LED_BUILTIN, LOW);
-      delay(50);
+    for (int j=0;j<3;j++) {
+      digitalWrite(LED_BTN, HIGH);
+      ringTheBell();
+      digitalWrite(LED_BTN, LOW);
+      delay(1000);
     }
-    oled.ssd1306_command(SSD1306_DISPLAYOFF);
   } else {
-    digitalWrite(LED_BUILTIN, LOW);
+    digitalWrite(LED_BTN, LOW);
   }
+}
+
+void ringTheBell() {
+  tone(SPK, 2500, 1000);
+  delay(1000);
+  tone(SPK, 1000, 2000);
+  delay(2000);
+  digitalWrite(SPK, LOW);
 }

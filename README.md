@@ -8,9 +8,9 @@ First, if you want to see the result, have a look at [this video](https://youtu.
 - 2 x [E32-868T20D](https://www.ebyte.com/en/product-view-news.aspx?id=132)
 - 4 x 18650 battery
 - 2 x 18650 battery holder (7.4v)
-- 1 x Buzzer
+- 2 x [Speaker](https://wiki.seeedstudio.com/Grove-Speaker/)
+- 1 x Push button (Adafruit
 - 1 x 220ohm resistance
-- 1 x Push button
 
 NB: Regarding local regulations, you perhaps need something different that 868mHz (maybe 433mHz), please respect local regulations. I'm not responsible if you use a forbidden frequency in your country.
 
