@@ -24,7 +24,6 @@ SoftwareSerial ESerial(PIN_RX, PIN_TX);
 EBYTE Transceiver(&ESerial, PIN_M0, PIN_M1, PIN_AX);
 
 void setup() {
-  Serial.begin(9600);
   ESerial.begin(9600);
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(BTN, INPUT_PULLUP);
@@ -59,15 +58,13 @@ void checkVoltage() {
   int input_voltage;
   float temp;
   raw_volt_input_val = analogRead(VOLT_INPUT);
-  temp = raw_volt_input_val/4.092;
-  raw_volt_input_val = (int) temp;
-  input_voltage = ((raw_volt_input_val%100)/10);
-  Serial.println(input_voltage);
-  if (input_voltage <= 4) {
+  temp = (raw_volt_input_val * 7) / 1024.0;
+  input_voltage = temp / (7500.0/(30000.0+7500.0));
+  if (input_voltage < 4) {
     digitalWrite(LED_VERTE, LOW);
     digitalWrite(LED_ORANG, LOW);
     digitalWrite(LED_ROUGE, HIGH);
-  } else if (input_voltage > 3 && input_voltage <= 4) {
+  } else if (input_voltage >= 4 && input_voltage <= 5) {
     digitalWrite(LED_VERTE, LOW);
     digitalWrite(LED_ORANG, HIGH);
     digitalWrite(LED_ROUGE, LOW);
